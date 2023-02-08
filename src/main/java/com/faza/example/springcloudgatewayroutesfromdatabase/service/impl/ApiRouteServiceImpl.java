@@ -1,5 +1,6 @@
 package com.faza.example.springcloudgatewayroutesfromdatabase.service.impl;
 
+import com.faza.example.springcloudgatewayroutesfromdatabase.configuration.GatewaySettings;
 import com.faza.example.springcloudgatewayroutesfromdatabase.model.database.ApiRoute;
 import com.faza.example.springcloudgatewayroutesfromdatabase.model.web.CreateOrUpdateApiRouteRequest;
 import com.faza.example.springcloudgatewayroutesfromdatabase.repository.ApiRouteRepository;
@@ -18,6 +19,9 @@ public class ApiRouteServiceImpl implements ApiRouteService {
   
   @Autowired
   private GatewayRouteService gatewayRouteService;
+
+  @Autowired
+  private GatewaySettings gatewaySettings;
 
   @Override
   public Flux<ApiRoute> findApiRoutes() {
@@ -62,6 +66,8 @@ public class ApiRouteServiceImpl implements ApiRouteService {
   
   private ApiRoute setNewApiRoute(ApiRoute apiRoute,
       CreateOrUpdateApiRouteRequest createOrUpdateApiRouteRequest) {
+//    apiRoute.setConnectTimeout();
+//    apiRoute.setReadTimeout();
     apiRoute.setPath(createOrUpdateApiRouteRequest.getPath());
     apiRoute.setMethod(createOrUpdateApiRouteRequest.getMethod());
     apiRoute.setUri(createOrUpdateApiRouteRequest.getUri());
