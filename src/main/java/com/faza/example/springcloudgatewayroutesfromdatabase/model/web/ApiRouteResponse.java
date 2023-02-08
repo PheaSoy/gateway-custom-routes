@@ -14,8 +14,13 @@ import lombok.NoArgsConstructor;
 public class ApiRouteResponse {
 
   private Long id;
-
+  private String service;
   private String path;
   private String method;
   private String uri;
+  private Boolean enabled;
+  private Long createdAt;
+  private Long updatedAt;
+  private Long connectTimeout;
+  private Long readTimeout;
 }
